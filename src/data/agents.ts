@@ -16,6 +16,23 @@ export interface Agent {
   };
 }
 
+export interface Agent {
+  name: string;
+  slug: string;
+  description: string;
+  category: string;
+  installCommand: string;
+  usageExample: string;
+  apiDocs: string;
+  tags: string[];
+  features?: string[];
+  configuration?: {
+    environmentVariables?: string[];
+    defaultFrom?: string;
+    emailFields?: string[];
+  };
+}
+
 export const agents: Agent[] = [
   {
     name: "Email Agent",
@@ -53,28 +70,32 @@ function App() {
       "📱 Responsive email form design",
       "⚡ Built with TypeScript for type safety",
       "🔄 Real-time loading states and status messages",
+      "✉️ Customizable sender email address",
     ],
     apiDocs: `The Email Agent CLI scaffolds three files in your Next.js project:
 
 1. **component/EmailAgent.tsx** - Client-side React component with:
-   - Email form (to, subject, message fields)
+   - Email form (from, to, subject, message fields)
+   - Default "from" address: onboarding@resend.dev (user-customizable)
    - Loading states and error handling
-   - Inline styled UI components
+   - Inline styled UI components with proper text visibility
 
 2. **app/api/email-agent/route.ts** - Server-side API route that:
    - Reads RESEND_API_KEY from environment variables
+   - Accepts custom "from" address from the form
    - Sends emails via Resend API
    - Returns success/error responses
 
 3. **app/types/type.ts** - TypeScript type definitions
 
-The component calls the API route internally, keeping your API key secure on the server.`,
+The component calls the API route internally, keeping your API key secure on the server. Users can customize the sender email address directly from the UI.`,
     configuration: {
       environmentVariables: [
-        "NEXT_PUBLIC_RESEND_KEY - Alternative env var name (optional)",
+        "NEXT_PUBLIC_RESEND_KEY -  RESEND_API_KEY -  (required)",
       ],
-      defaultFrom: "onboarding@resend.dev (can be customized in route.ts)",
-      emailFields: ["to", "subject", "html"],
+      defaultFrom:
+        "onboarding@resend.dev (can be customized by users in the form)",
+      emailFields: ["from", "to", "subject", "html"],
     },
     tags: [
       "email",
