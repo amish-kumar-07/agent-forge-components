@@ -51,16 +51,20 @@ npm install resend
 RESEND_API_KEY=re_your_api_key_here
 
 // Step 4: Import and use the component
-import { EmailAgent } from '@/component/EmailAgent';
+'use client';
+import React from 'react'
+import  EmailAgent  from '@/component/EmailAgent';
 
-function App() {
+
+function page() {
   return (
-    <div>
-      <h1>Send Email</h1>
-      <EmailAgent />
+    <div className='bg-amber-50'>
+      <EmailAgent/>
     </div>
-  );
-}`,
+  )
+}
+
+export default page`,
     features: [
       "🚀 One-command setup with CLI scaffolding",
       "📧 Pre-built React component with form UI",
