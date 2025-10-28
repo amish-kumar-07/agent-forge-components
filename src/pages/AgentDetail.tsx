@@ -251,7 +251,7 @@ const AgentDetail = () => {
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <Button variant="outline" className="w-full justify-start" asChild>
-                    <a href="https://www.npmjs.com/package/@theagentverse/email-agent-cli" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.npmjs.com/package/@theagentverse" target="_blank" rel="noopener noreferrer">
                       <Package className="mr-2 h-4 w-4" />
                       View on npm
                       <ExternalLink className="ml-auto h-4 w-4" />

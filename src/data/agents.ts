@@ -38,7 +38,7 @@ export const agents: Agent[] = [
     name: "Email Agent",
     slug: "email-agent",
     description:
-      "A Next.js CLI tool that scaffolds a complete email sending system with React components and API routes using Resend. Handles transactional emails, notifications, and user communications with a pre-built UI and secure server-side API.",
+      "A pre-built Email-agent.",
     category: "Communication",
     installCommand: "npx @theagentverse/email-agent-cli init",
     usageExample: `// Step 1: Run CLI in your Next.js project
@@ -243,76 +243,92 @@ function App() {
     ],
   },
   {
-    name: "Payment Agent",
-    slug: "payment-agent",
+    name: "PayPal Payment Agent",
+    slug: "paypal-payment-agent",
     description:
-      "Complete payment processing solution with Stripe integration. Handle one-time payments, subscriptions, invoicing, and refunds with a production-ready checkout component.",
+      "PayPal integration for Next.js.",
     category: "Commerce",
-    installCommand: "npm install @agentverse/payment-agent",
-    usageExample: `import { PaymentAgent } from '@agentverse/payment-agent';
+    installCommand: "npx @theagentverse/paypal-agent-cli init",
+    usageExample: `import PricingModal from '@/component/PaypalPayment';
 
 function App() {
   return (
-    <PaymentAgent 
-      stripePublishableKey={process.env.NEXT_PUBLIC_STRIPE_KEY}
-      amount={4999}
-      currency="usd"
-      description="Premium Plan Subscription"
-      allowPromotionCodes={true}
-      onSuccess={(payment) => {
-        console.log('Payment successful:', payment.id);
-      }}
-      onError={(error) => {
-        console.error('Payment failed:', error);
-      }}
-    />
+    <div>
+      <h1>My App</h1>
+      <PricingModal />
+    </div>
   );
-}`,
+}
+
+// Environment variables (.env.local):
+// NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_paypal_client_id
+// PAYPAL_CLIENT_SECRET=your_paypal_secret
+// PAYPAL_API_URL=https://api-m.sandbox.paypal.com`,
     features: [
-      "💳 Multiple payment methods (cards, Apple Pay, Google Pay)",
-      "🔄 Subscription management",
-      "🧾 Automatic invoice generation",
-      "💰 Refund processing",
-      "🎟️ Promotion codes and coupons",
-      "🌍 Multi-currency support",
-      "🔐 PCI compliant",
-      "📊 Payment analytics",
+      "💳 Multiple payment methods (PayPal account, credit/debit cards)",
+      "🎨 Beautiful pre-built pricing modal with 3 customizable plans",
+      "🌍 International payment support (200+ countries)",
+      "🔐 Secure server-side payment processing",
+      "✅ Automatic payment capture and verification",
+      "📱 Mobile responsive design",
+      "🎯 TypeScript ready with full type support",
+      "⚡ 5-minute setup with CLI installation",
     ],
-    apiDocs: `Full-featured payment processing powered by Stripe. Handles the entire payment flow from checkout to fulfillment.
+    apiDocs: `Full-featured PayPal payment integration for Next.js applications. Handles the entire payment flow from pricing display to payment capture with server-side security.
 
-**Payment Methods:**
-- Credit/Debit cards
-- Apple Pay and Google Pay
-- ACH bank transfers
-- SEPA Direct Debit
-- Cryptocurrency (via Stripe)
+**Payment Methods Supported:**
+- PayPal account login
+- Credit/Debit cards (Visa, Mastercard, Amex, Discover)
+- Guest checkout for cards
+- Apple Pay (via PayPal)
+- Google Pay (via PayPal)
 
-**Subscription Features:**
-- Recurring billing
-- Usage-based pricing
-- Trial periods
-- Proration handling
-- Automatic tax calculation
+**Key Features:**
+- Pre-built responsive pricing modal
+- 3 customizable pricing tiers (Basic, Pro, Premium)
+- Automatic order creation and capture
+- Transaction logging and success modal
+- Error handling and retry logic
+- Sandbox and production environment support
+
+**Setup Process:**
+1. Run: npx @theagentverse/paypal-agent-cli init
+2. Add PayPal credentials to .env.local
+3. Import and use the PricingModal component
+4. Customize pricing plans in the component
+
+**API Routes Included:**
+- POST /api/paypal/create-order - Creates PayPal order
+- POST /api/paypal/capture-order - Captures completed payment
 
 **Security:**
-- PCI DSS compliant
-- 3D Secure (SCA) support
-- Fraud detection
-- Webhook signature verification`,
+- Client secret never exposed to frontend
+- Server-side payment processing
+- HTTPS required in production
+- Environment variable protection
+- Input validation on API routes
+
+**Testing:**
+- Full PayPal sandbox support
+- Test card numbers provided
+- Mock payment scenarios
+- Sandbox account setup guide`,
     configuration: {
       environmentVariables: [
-        "NEXT_PUBLIC_STRIPE_KEY - Stripe publishable key (required)",
-        "STRIPE_SECRET_KEY - Stripe secret key for server-side (required)",
-        "STRIPE_WEBHOOK_SECRET - Webhook endpoint secret (optional)",
+        "NEXT_PUBLIC_PAYPAL_CLIENT_ID - PayPal Client ID (required)",
+        "PAYPAL_CLIENT_SECRET - PayPal Secret Key for server-side (required)",
+        "PAYPAL_API_URL - PayPal API endpoint (sandbox or production)",
       ],
     },
     tags: [
       "payments",
-      "stripe",
+      "paypal",
       "commerce",
-      "subscriptions",
       "checkout",
-      "billing",
+      "pricing",
+      "nextjs",
+      "typescript",
+      "react",
     ],
   },
   {
