@@ -414,74 +414,74 @@ function App() {
     ],
   },
   {
-    name: "Search Agent",
-    slug: "search-agent",
+    name: "Docs Assistant",
+    slug: "docs-assistant",
     description:
-      "Powerful full-text search with fuzzy matching, filtering, faceting, and ranking. Works with any data source, supports real-time search, and includes typo tolerance for better user experience.",
-    category: "Data",
-    installCommand: "npm install @agentverse/search-agent",
-    usageExample: `import { SearchAgent } from '@agentverse/search-agent';
+      "Plug-and-play AI documentation assistant that answers user queries by extracting keywords, searching your docs, and generating natural language responses. Zero configuration, fully production-ready.",
+    category: "AI",
+    installCommand: "npm install @agentverse/docs-assistant",
+    usageExample: `import { DocsAssistant } from '@agentverse/docs-assistant';
 
-function App() {
-  const [results, setResults] = useState([]);
+  function App() {
+    const docs = [
+      { id: 1, title: "Getting Started", content: "How to install and initialize..." },
+      { id: 2, title: "API Reference", content: "All API methods and parameters..." }
+    ];
 
-  const products = [
-    { id: 1, title: 'Laptop', description: 'High-performance laptop', price: 999 },
-    { id: 2, title: 'Mouse', description: 'Wireless mouse', price: 29 },
-  ];
-
-  return (
-    <SearchAgent 
-      data={products}
-      searchKeys={['title', 'description']}
-      fuzzyMatch={true}
-      maxResults={10}
-      onResults={(results) => setResults(results)}
-      filters={[
-        { key: 'price', min: 0, max: 1000 }
-      ]}
-    />
-  );
-}`,
+    return (
+      <DocsAssistant
+        documents={docs}
+        maxResponseLength={300}
+        onAnswer={(response) => console.log(response)}
+        aiProvider={{
+          model: "gpt-4.1-mini",
+          apiKey: process.env.OPENAI_API_KEY
+        }}
+      />
+    );
+  }`,
     features: [
-      "🔍 Full-text search with ranking",
-      "🎯 Fuzzy matching and typo tolerance",
-      "⚡ Real-time search results",
-      "🏷️ Faceted filtering",
-      "📊 Result ranking and scoring",
-      "🔤 Synonym support",
-      "🌐 Multi-language search",
-      "⚙️ Customizable ranking algorithms",
+      "🤖 Natural language documentation search",
+      "🧠 Automatic keyword extraction",
+      "📚 Semantic + keyword-based doc search",
+      "📝 LLM-powered summarization",
+      "⚙️ Zero setup required",
+      "📡 Works offline with local docs",
+      "⚡ Fast, production-ready performance",
+      "🔌 One-line integration"
     ],
-    apiDocs: `High-performance search engine with advanced features for data discovery. Works client-side or server-side with large datasets.
+    apiDocs: `AI-powered documentation assistant with an automated pipeline:
 
-**Search Features:**
-- Full-text search across multiple fields
-- Fuzzy matching with configurable threshold
-- Typo tolerance (1-2 character edits)
-- Prefix matching for autocomplete
-- Phrase matching with quotes
-- Boolean operators (AND, OR, NOT)
+  **Pipeline Flow:**
+  1. User Query →  
+  2. Keyword Extraction →  
+  3. Document Search (semantic + lexical) →  
+  4. LLM Summary →  
+  5. Final Natural Language Response  
 
-**Filtering & Faceting:**
-- Range filters (numeric, dates)
-- Multi-select facets
-- Hierarchical facets
-- Dynamic filter generation
+  **Features:**
+  - Automatic keyword extraction
+  - Embedding-based semantic search
+  - Chunking & relevance ranking
+  - LLM answer synthesis with citations
+  - Supports multiple AI providers (OpenAI, Anthropic, Gemini)
+  - Customizable max token/response limits
+  - Local or remote documentation indexing
 
-**Performance:**
-- Incremental indexing
-- Search-as-you-type optimization
-- Result caching
-- Lazy loading for large datasets
-- Web Worker support for non-blocking search`,
+  **Integration:**
+  - Provide an array of documentation objects: [{ id, title, content, tags }]
+  - Configure AI provider credentials
+  - Optional: custom ranking, custom extractor, custom summarizer`,
     configuration: {
       environmentVariables: [
-        "SEARCH_INDEX_URL - URL to search index (optional for server-side)",
-      ],
+        "OPENAI_API_KEY - API key for LLM responses (if using OpenAI)",
+        "ANTHROPIC_API_KEY - optional for Anthropic models",
+        "GEMINI_API_KEY - optional for Google models"
+      ]
     },
-    tags: ["search", "filter", "fuzzy", "data", "full-text", "autocomplete"],
-  },
+    tags: ["docs", "assistant", "ai", "search", "llm", "support", "documentation"]
+  }
+
 ];
 
 export const categories = Array.from(
