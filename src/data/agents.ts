@@ -349,8 +349,9 @@ export default function Page() {
     description:
       "Production-ready Gemini AI integration for Next.js with a pre-built chat interface, floating chat widget, and dashboard view. Includes ready-to-use API routes for Gemini chat and analysis. Setup in minutes using CLI scaffolding.",
     category: "AI & LLMs",
-    installCommand: "npx gemini-interface-agent init",
-    npmUrl: "https://www.npmjs.com/package/gemini-interface-agent",
+    installCommand: "npx @theagentverse/gemini-interface-agent init",
+    npmUrl:
+      "https://www.npmjs.com/package/@theagentverse/gemini-interface-agent",
     docsUrl: "https://ai.google.dev/gemini-api/docs",
     usageExample: `import GeminiWidget from "@/component/GeminiWidget";
 
