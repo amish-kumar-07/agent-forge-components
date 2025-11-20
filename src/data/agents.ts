@@ -101,7 +101,7 @@ The component calls the API route internally, keeping your API key secure on the
   {
     name: "PayPal Payment Agent",
     slug: "paypal-payment-agent",
-    description: "PayPal integration for Next.js.",
+    description: "Production-ready PayPal integration for Next.js with pre-built pricing UI. Accepts PayPal, credit cards, Apple Pay, and Google Pay. Includes secure server-side processing, automatic payment capture, and supports international transactions. Setup in minutes with CLI scaffolding.",
     category: "Commerce",
     installCommand: "npx @theagentverse/paypal-agent-cli init",
     npmUrl: "https://www.npmjs.com/package/@theagentverse/paypal-agent-cli",
