@@ -22,7 +22,8 @@ export const agents: Agent[] = [
   {
     name: "Email Agent",
     slug: "email-agent",
-    description: "Complete email sending solution for Next.js with Resend integration. Pre-built UI component, server-side API routes, and secure email delivery. Perfect for transactional emails, notifications, and contact forms.",
+    description:
+      "Complete email sending solution for Next.js with Resend integration. Pre-built UI component, server-side API routes, and secure email delivery. Perfect for transactional emails, notifications, and contact forms.",
     category: "Communication",
     installCommand: "npx @theagentverse/email-agent-cli init",
     npmUrl: "https://www.npmjs.com/package/@theagentverse/email-agent-cli",
@@ -101,7 +102,8 @@ The component calls the API route internally, keeping your API key secure on the
   {
     name: "PayPal Payment Agent",
     slug: "paypal-payment-agent",
-    description: "Production-ready PayPal integration for Next.js with pre-built pricing UI. Includes secure server-side processing, automatic payment capture, and supports international transactions. Setup in minutes with CLI scaffolding.",
+    description:
+      "Production-ready PayPal integration for Next.js with pre-built pricing UI. Includes secure server-side processing, automatic payment capture, and supports international transactions. Setup in minutes with CLI scaffolding.",
     category: "Commerce",
     installCommand: "npx @theagentverse/paypal-agent-cli init",
     npmUrl: "https://www.npmjs.com/package/@theagentverse/paypal-agent-cli",
@@ -254,6 +256,92 @@ export default function Page() {
     },
 
     tags: ["chatbot", "assistant", "ai", "nextjs", "docs", "support", "llm"],
+  },
+  {
+    name: "GitHub Login Agent",
+    slug: "github-login-agent",
+    description:
+      "Production-ready GitHub OAuth integration for Next.js with a pre-built GitHub login button. Handles secure OAuth redirects, token exchange, user profile retrieval, and supports both client-side and server-side flows. Setup in minutes using CLI scaffolding.",
+    category: "Authentication",
+    installCommand: "npx @theagentverse/github-login-button init",
+    npmUrl: "https://www.npmjs.com/package/@theagentverse/github-login-button",
+    docsUrl:
+      "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
+    usageExample: `import GitHubLoginButton from "@/components/GitHubLoginButton";
+
+export default function Page() {
+  return (
+    <div>
+      <h1>Authentication</h1>
+      <GitHubLoginButton />
+    </div>
+  );
+}
+
+// Environment variables (.env.local):
+// NEXT_PUBLIC_GITHUB_CLIENT_ID=your_client_id
+// GITHUB_CLIENT_SECRET=your_secret
+// NEXT_PUBLIC_GITHUB_REDIRECT_URI=http://localhost:3000/api/auth/callback
+`,
+    features: [
+      "🔑 OAuth 2.0 GitHub Login Flow",
+      "🎨 Pre-built GitHub login button with modern UI",
+      "🔐 Secure server-side token exchange",
+      "📧 Access to GitHub user email & profile",
+      "⚡ Works with Next.js App Router & API Routes",
+      "📱 Fully mobile responsive",
+      "🌍 Supports both public & private GitHub apps",
+      "🚀 2-minute setup using CLI",
+    ],
+    apiDocs: `Full OAuth-based GitHub Login flow for Next.js apps.
+
+**Features:**
+- Redirects user to GitHub OAuth page
+- Exchanges code for access token (server-side)
+- Fetches GitHub user profile + email securely
+- Provides login callback handler
+- Works with both GitHub personal and organizational accounts
+- Prevents exposure of Client Secret
+
+**OAuth Flow Steps:**
+1. User clicks GitHub login button
+2. Redirects to GitHub consent page
+3. GitHub returns ?code=XYZ to callback
+4. Server exchanges code + secret for access_token
+5. Access token fetches user info securely
+6. Login is completed & session created
+
+**API Routes Included:**
+- GET /api/auth/login - Redirect to GitHub login
+- GET /api/auth/callback - Token exchange + user fetch
+
+**Security Details:**
+- Client Secret never exposed to the frontend
+- Token exchange occurs server-side only
+- HTTPS required in production
+- Strict redirect URL verification
+
+**Testing Support:**
+- GitHub test OAuth apps
+- Sandbox mode not required
+- Fake accounts for testing user profile responses`,
+    configuration: {
+      environmentVariables: [
+        "NEXT_PUBLIC_GITHUB_CLIENT_ID - GitHub OAuth App Client ID (required)",
+        "GITHUB_CLIENT_SECRET - GitHub OAuth App Client Secret (required)",
+        "NEXT_PUBLIC_GITHUB_REDIRECT_URI - OAuth callback URL (required)",
+      ],
+    },
+    tags: [
+      "authentication",
+      "github",
+      "oauth",
+      "login",
+      "nextjs",
+      "typescript",
+      "react",
+      "security",
+    ],
   },
 ];
 
