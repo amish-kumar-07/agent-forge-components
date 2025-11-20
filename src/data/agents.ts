@@ -7,30 +7,15 @@ export interface Agent {
   usageExample: string;
   apiDocs: string;
   tags: string[];
-  features?: string[]; // Add this optional property
-  configuration?: {
-    // Add this optional property
-    environmentVariables?: string[];
-    defaultFrom?: string;
-    emailFields?: string[];
-  };
-}
-
-export interface Agent {
-  name: string;
-  slug: string;
-  description: string;
-  category: string;
-  installCommand: string;
-  usageExample: string;
-  apiDocs: string;
-  tags: string[];
   features?: string[];
   configuration?: {
     environmentVariables?: string[];
     defaultFrom?: string;
     emailFields?: string[];
   };
+  // New optional fields for dynamic links
+  npmUrl?: string;
+  docsUrl?: string;
 }
 
 export const agents: Agent[] = [
@@ -40,6 +25,8 @@ export const agents: Agent[] = [
     description: "A pre-built Email-agent.",
     category: "Communication",
     installCommand: "npx @theagentverse/email-agent-cli init",
+    npmUrl: "https://www.npmjs.com/package/@theagentverse/email-agent-cli",
+    docsUrl: "https://resend.com/docs",
     usageExample: `// Step 1: Run CLI in your Next.js project
 npx @theagentverse/email-agent-cli init
 
@@ -118,6 +105,8 @@ The component calls the API route internally, keeping your API key secure on the
       "AI-powered translation agent supporting 100+ languages with context-aware translations. Perfect for building multilingual applications with intelligent language detection and translation memory.",
     category: "AI & ML",
     installCommand: "npm install @agentverse/translation-agent",
+    npmUrl: "https://www.npmjs.com/package/@agentverse/translation-agent",
+    docsUrl: "https://cloud.google.com/translate/docs",
     usageExample: `import { TranslationAgent } from '@agentverse/translation-agent';
 
 function App() {
@@ -179,6 +168,8 @@ function App() {
       "Privacy-first analytics platform that tracks user behavior and application metrics without cookies. GDPR and CCPA compliant with real-time dashboards and custom event tracking.",
     category: "Analytics",
     installCommand: "npm install @agentverse/analytics-agent",
+    npmUrl: "https://www.npmjs.com/package/@agentverse/analytics-agent",
+    docsUrl: "https://plausible.io/docs",
     usageExample: `import { AnalyticsAgent } from '@agentverse/analytics-agent';
 
 function App() {
@@ -247,6 +238,8 @@ function App() {
     description: "PayPal integration for Next.js.",
     category: "Commerce",
     installCommand: "npx @theagentverse/paypal-agent-cli init",
+    npmUrl: "https://www.npmjs.com/package/@theagentverse/paypal-agent-cli",
+    docsUrl: "https://developer.paypal.com/docs/api/overview/",
     usageExample: `import PricingModal from '@/component/PaypalPayment';
 
 function App() {
@@ -336,6 +329,8 @@ function App() {
       "Complete authentication system with OAuth social providers, email/password, magic links, and multi-factor authentication. Includes session management, JWT handling, and user profile management.",
     category: "Security",
     installCommand: "npm install @agentverse/auth-agent",
+    npmUrl: "https://www.npmjs.com/package/@agentverse/auth-agent",
+    docsUrl: "https://authjs.dev/getting-started",
     usageExample: `import { AuthAgent, useAuth } from '@agentverse/auth-agent';
 
 function App() {
@@ -418,7 +413,8 @@ function App() {
       "Plug-and-play AI chatbot assistant for Next.js. Extracts keywords, searches your documentation, and generates natural language answers. Zero configuration and fully production-ready.",
     category: "AI",
     installCommand: "npx @theagentverse/chatbot-agent-cli init",
-
+    npmUrl: "https://www.npmjs.com/package/@theagentverse/chatbot-agent-cli",
+    docsUrl: "https://ai.google.dev/gemini-api/docs",
     usageExample: `import React from "react";
 import Chatbot from "@/component/Chatbot";
 

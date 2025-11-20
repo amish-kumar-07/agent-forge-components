@@ -244,28 +244,34 @@ const AgentDetail = () => {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              {/* Quick Links */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-base">Quick Links</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <Button variant="outline" className="w-full justify-start" asChild>
-                    <a href="https://www.npmjs.com/package/@theagentverse" target="_blank" rel="noopener noreferrer">
-                      <Package className="mr-2 h-4 w-4" />
-                      View on npm
-                      <ExternalLink className="ml-auto h-4 w-4" />
-                    </a>
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start" asChild>
-                    <a href="https://resend.com/docs" target="_blank" rel="noopener noreferrer">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Resend Docs
-                      <ExternalLink className="ml-auto h-4 w-4" />
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
+              {/* Quick Links - Now with dynamic URLs */}
+              {(agent.npmUrl || agent.docsUrl) && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-base">Quick Links</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2">
+                    {agent.npmUrl && (
+                      <Button variant="outline" className="w-full justify-start" asChild>
+                        <a href={agent.npmUrl} target="_blank" rel="noopener noreferrer">
+                          <Package className="mr-2 h-4 w-4" />
+                          View on npm
+                          <ExternalLink className="ml-auto h-4 w-4" />
+                        </a>
+                      </Button>
+                    )}
+                    {agent.docsUrl && (
+                      <Button variant="outline" className="w-full justify-start" asChild>
+                        <a href={agent.docsUrl} target="_blank" rel="noopener noreferrer">
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          Documentation
+                          <ExternalLink className="ml-auto h-4 w-4" />
+                        </a>
+                      </Button>
+                    )}
+                  </CardContent>
+                </Card>
+              )}
 
               {/* Related Agents */}
               <Card>
