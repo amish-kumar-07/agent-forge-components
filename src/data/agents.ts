@@ -343,6 +343,88 @@ export default function Page() {
       "security",
     ],
   },
+  {
+    name: "Gemini Interface Agent",
+    slug: "gemini-interface-agent",
+    description:
+      "Production-ready Gemini AI integration for Next.js with a pre-built chat interface, floating chat widget, and dashboard view. Includes ready-to-use API routes for Gemini chat and analysis. Setup in minutes using CLI scaffolding.",
+    category: "AI & LLMs",
+    installCommand: "npx gemini-interface-agent init",
+    npmUrl: "https://www.npmjs.com/package/gemini-interface-agent",
+    docsUrl: "https://ai.google.dev/gemini-api/docs",
+    usageExample: `import GeminiWidget from "@/component/GeminiWidget";
+
+export default function Page() {
+  return (
+    <div>
+      <h1>Gemini AI</h1>
+      <GeminiWidget position="bottom-right" theme="light" />
+    </div>
+  );
+}
+
+// Environment variables (.env.local):
+// GEMINI_API_KEY=your_api_key
+// NEXT_PUBLIC_GEMINI_MODEL=gemini-2.0-flash
+`,
+    features: [
+      "💬 Full Chat UI powered by Gemini models",
+      "💡 Floating Chat Widget with animated interactions",
+      "🖥️ Fullscreen Gemini Dashboard for AI-driven tools",
+      "⚡ Pre-built Next.js API routes for chat & analysis",
+      "🎨 Beautiful, modern UI with light/dark mode",
+      "📱 Fully responsive & mobile-friendly",
+      "🚀 One-click setup using CLI",
+      "🔍 Supports multi-turn conversations with context",
+    ],
+    apiDocs: `Gemini Interface Agent provides a full chat system for Next.js apps, using Google's Gemini API.
+
+**Features:**
+- Fully interactive chat UI with animations
+- Floating widget that expands to a full chat interface
+- Dashboard mode for embedded AI tools
+- Chat context/history support
+- Ready-made API routes for chat & analysis
+
+**Chat Flow Steps:**
+1. User types a message in GeminiChat or GeminiWidget
+2. Message is sent to /api/gemini/chat
+3. Server calls Gemini model with conversation history
+4. Response is streamed or returned
+5. UI renders assistant response with animation
+
+**API Routes Included:**
+- POST /api/gemini/chat — Sends prompts + history to Gemini
+- POST /api/gemini/analyze — Handles summarization, analysis, insights
+
+**Security Details:**
+- API key stored in environment variables ONLY
+- No API key exposed to frontend
+- Requests authenticated server-side
+- Supports both local & production deployments
+
+**Testing Support:**
+- Works with Google AI Studio Gemini API keys
+- Easily testable via browser, Postman, or CLI
+- Chat UI shows error states gracefully`,
+    configuration: {
+      environmentVariables: [
+        "GEMINI_API_KEY - Google Gemini API Key (required)",
+        "NEXT_PUBLIC_GEMINI_MODEL - Gemini model name (required, ex: gemini-2.0-flash)",
+      ],
+    },
+    tags: [
+      "ai",
+      "gemini",
+      "llm",
+      "chatbot",
+      "nextjs",
+      "typescript",
+      "react",
+      "widget",
+      "dashboard",
+    ],
+  },
 ];
 
 export const categories = Array.from(
