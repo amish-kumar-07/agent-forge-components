@@ -37,8 +37,7 @@ export const agents: Agent[] = [
   {
     name: "Email Agent",
     slug: "email-agent",
-    description:
-      "A pre-built Email-agent.",
+    description: "A pre-built Email-agent.",
     category: "Communication",
     installCommand: "npx @theagentverse/email-agent-cli init",
     usageExample: `// Step 1: Run CLI in your Next.js project
@@ -245,8 +244,7 @@ function App() {
   {
     name: "PayPal Payment Agent",
     slug: "paypal-payment-agent",
-    description:
-      "PayPal integration for Next.js.",
+    description: "PayPal integration for Next.js.",
     category: "Commerce",
     installCommand: "npx @theagentverse/paypal-agent-cli init",
     usageExample: `import PricingModal from '@/component/PaypalPayment';
@@ -414,74 +412,71 @@ function App() {
     ],
   },
   {
-    name: "Docs Assistant",
-    slug: "docs-assistant",
+    name: "Chatbot Agent",
+    slug: "chatbot-agent",
     description:
-      "Plug-and-play AI documentation assistant that answers user queries by extracting keywords, searching your docs, and generating natural language responses. Zero configuration, fully production-ready.",
+      "Plug-and-play AI chatbot assistant for Next.js. Extracts keywords, searches your documentation, and generates natural language answers. Zero configuration and fully production-ready.",
     category: "AI",
-    installCommand: "npm install @agentverse/docs-assistant",
-    usageExample: `import { DocsAssistant } from '@agentverse/docs-assistant';
+    installCommand: "npx @theagentverse/chatbot-agent-cli init",
 
-  function App() {
-    const docs = [
-      { id: 1, title: "Getting Started", content: "How to install and initialize..." },
-      { id: 2, title: "API Reference", content: "All API methods and parameters..." }
-    ];
+    usageExample: `import React from "react";
+import Chatbot from "@/component/Chatbot";
 
-    return (
-      <DocsAssistant
-        documents={docs}
-        maxResponseLength={300}
-        onAnswer={(response) => console.log(response)}
-        aiProvider={{
-          model: "gpt-4.1-mini",
-          apiKey: process.env.OPENAI_API_KEY
-        }}
-      />
-    );
-  }`,
+export default function Page() {
+  return (
+    <div>
+      <Chatbot />
+    </div>
+  );
+}`,
+
     features: [
-      "🤖 Natural language documentation search",
+      "🤖 AI-powered chatbot for documentation & FAQ queries",
       "🧠 Automatic keyword extraction",
-      "📚 Semantic + keyword-based doc search",
-      "📝 LLM-powered summarization",
-      "⚙️ Zero setup required",
-      "📡 Works offline with local docs",
+      "📚 Intelligent documentation search",
+      "📝 LLM-powered natural language responses",
+      "⚙️ Zero configuration required",
+      "📡 Runs fully on your Next.js API routes",
       "⚡ Fast, production-ready performance",
-      "🔌 One-line integration"
+      "🔌 Simple drop-in component (<Chatbot />)",
     ],
-    apiDocs: `AI-powered documentation assistant with an automated pipeline:
 
-  **Pipeline Flow:**
-  1. User Query →  
-  2. Keyword Extraction →  
-  3. Document Search (semantic + lexical) →  
-  4. LLM Summary →  
-  5. Final Natural Language Response  
+    apiDocs: `AI chatbot pipeline for answering documentation, FAQs, and support queries:
 
-  **Features:**
-  - Automatic keyword extraction
-  - Embedding-based semantic search
-  - Chunking & relevance ranking
-  - LLM answer synthesis with citations
-  - Supports multiple AI providers (OpenAI, Anthropic, Gemini)
-  - Customizable max token/response limits
-  - Local or remote documentation indexing
+**Pipeline Flow:**
+1. User Question  
+2. Keyword Extraction  
+3. Documentation Search  
+4. LLM Answer Generation  
+5. Final Response Returned to UI  
 
-  **Integration:**
-  - Provide an array of documentation objects: [{ id, title, content, tags }]
-  - Configure AI provider credentials
-  - Optional: custom ranking, custom extractor, custom summarizer`,
+**Features:**
+- Automated keyword extraction via API route
+- Local text/document search
+- LLM response generation with Gemini or OpenAI
+- Customizable max token/response limits
+- Modular API route structure:
+  - /api/extract-keywords
+  - /api/search-docs
+  - /api/generate-answer
+- Works with any text-based documentation dataset
+- Fully compatible with Next.js App Router
+
+**Integration:**
+- Import and use the Chatbot UI component
+- Store documentation files locally or fetch dynamically
+- Configure your API key inside \`.env.local\`
+`,
+
     configuration: {
       environmentVariables: [
-        "OPENAI_API_KEY - API key for LLM responses (if using OpenAI)",
-        "ANTHROPIC_API_KEY - optional for Anthropic models",
-        "GEMINI_API_KEY - optional for Google models"
-      ]
+        "GEMINI_API_KEY - Required for Gemini LLM responses",
+        "OPENAI_API_KEY - Optional alternative for OpenAI models",
+      ],
     },
-    tags: ["docs", "assistant", "ai", "search", "llm", "support", "documentation"]
-  }
 
+    tags: ["chatbot", "assistant", "ai", "nextjs", "docs", "support", "llm"],
+  },
 ];
 
 export const categories = Array.from(
